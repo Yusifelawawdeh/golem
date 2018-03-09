@@ -36,7 +36,7 @@ class TestP2PService(TestDatabaseWithReactor):
             connect_to_known_hosts=False)
 
     def test_find_node(self):
-        node_key_id = uuid.uuid4()
+        node_key_id = uuid.uuid1()
 
         # find_node() without parameter
         node_session = peersession.PeerSession(conn=mock.MagicMock())
@@ -64,7 +64,7 @@ class TestP2PService(TestDatabaseWithReactor):
             return '{}.{}.{}.{}'.format(dig(), dig(), dig(), dig())
 
         # find_node() via kademlia neighbours
-        neighbour_node_key_id = uuid.uuid4()
+        neighbour_node_key_id = uuid.uuid1()
         neighbour_node = Node(
             node_name='Syndrom wstrząsu toksycznego',
             key=str(neighbour_node_key_id),
@@ -288,7 +288,7 @@ class TestP2PService(TestDatabaseWithReactor):
             return True
 
         def gen_uuid():
-            return str(uuid.uuid4()).replace('-', '')
+            return str(uuid.uuid1()).replace('-', '')
 
         key_id = gen_uuid()
         conn_id = gen_uuid()
